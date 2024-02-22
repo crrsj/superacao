@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+    <link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	
+ <title>Superacao</title>
+ 
+ 
+  <style type="text/css">
+  
+   body{
+   background-image:url('fitness1.jpg');
+   background-repeat: no-repeat;
+   background-position: center 0%;
+   background-size: cover
+   
+   
+   }
+   
+    table {
+      opacity: 0.8; /* Ajuste o valor conforme necessário */
+    }
+
+    /* Estilos adicionais para melhorar a visualização (opcional) */
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px;
+
+      }
+   html{
+       margin-left: 10%;
+       margin-right: 10%
+    }
+  h1 {
+	 text-align: center;
+	 color: white;
+	 font-size:3em;
+	 padding: 4%
+	
+   }
+   
+    label {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: bold;
+      color: #FFD700; 
+      margin-bottom: 8px;
+   }
+   
+   #paginacao button {
+      background-color: #3498db; /* Cor azul chamativa - ajuste conforme desejado */
+      color: #fff; /* Cor do texto branco para contraste */
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #paginacao button:hover {
+      background-color: #2980b9; /* Cor mais escura ao passar o mouse - ajuste conforme desejado */
+    }
+    
+    input {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #3498db; /* Cor da borda azul chamativa - ajuste conforme desejado */
+  border-radius: 4px;
+  color: #3498db; /* Cor do texto igual à cor da borda para combinar */
+  transition: border-color 0.3s, color 0.3s;
+}
+
+input:hover, input:focus {
+  border-color: #2980b9; /* Cor mais escura ao passar o mouse ou focar - ajuste conforme desejado */
+  color: #2980b9; /* Cor do texto mais escura ao passar o mouse ou focar - ajuste conforme desejado */
+}
+</style>
+
+</head>
+</head>
+<body>
+ <h1>Academia Superação</h1>
+	<form action=""id ="formCadastro">
+		<div class="row">
+			<div class="col">
+				<label>ID</label> 
+				<input type="text" class="form-control" id="id"
+					aria-label="ID" readonly="readonly">
+			</div>
+			<div class="col">
+				<label>Nome</label> 
+				<input type="text" class="form-control"
+					id="nome" placeholder="Digite o nome"
+					aria-label=" Nome">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label>Endereço</label> 
+				<input type="text" class="form-control"
+					id="endereco" placeholder="Digite o endereço"
+					aria-label="Apartamento">
+			</div>
+			<div class="col">
+				<label>telefone</label>
+				 <input type="text" class="form-control"
+					id="telefone" placeholder="Digite o número do telefone"
+					aria-label="Telefone">
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col">
+				<label>Data de Nascimento</label> 
+				<input type="date" class="form-control"
+					id="dataNasc" placeholder="Digite a data de nascimento" aria-label="Data de Nascimento">
+			</div>
+			<div class="col">
+				<label>Data da Matrícula</label> 
+				<input type="date" class="form-control"
+					id="dataMat" placeholder="Digite a data da matrícula"
+					aria-label="Data da Matrícula">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<label>Data de Pagamento</label>
+				 <input type="date" class="form-control"
+					id="dataPag" placeholder="Digite a data do pagamento"
+					aria-label="Data de pagamento">
+			</div>
+			<div class="col">
+				<label>Valor</label> 
+				<input type="number"
+					class="form-control" id="valor"
+					placeholder="Digite o valor da mensalidade"
+					aria-label="Valor da mensalidade">
+			</div>
+		</div>
+		<div class="row">
+		 <div class="col">
+				<label>Status</label> 
+				<input type="text" class="form-control"
+					id="status" placeholder="Digite o status do condomínio"
+					aria-label="Status">
+			</div>
+		</div>
+	
+		</div>
+		<br>
+		
+			
+	</form>
+     <button type="button" class="btn btn-success"onclick="salvarPessoa();">Cadastrar</button>
+	 <button type="button" class="btn btn-primary" data-bs-toggle="modal"data-bs-target="#modalPesquisarPessoa">Pesquisar</button>	
+	 <button type="button" class="btn btn-secondary" onclick="document.getElementById('formCadastro').reset();">Limpar</button>
+	 <button type="button" class="btn btn-warning" onclick="deletarInicio();">Excluir</button>
+ <div class="modal fade" id="modalPesquisarPessoa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Pesquisar Pessoa</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nameBusca" class="col-form-label">Nome:</label>
+            <input type="text" class="form-control" id="nameBusca">
+          </div>
+          
+        </form>
+	<div style="height: 300px; overflow: scroll">
+		<table class="table table-dark table-striped" id="tabelaResultados">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Telefone</th>
+					<th scope="col">Status</th>
+					<th scope="col">Mais</th>
+					<th scope="col">Excluir</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	  </div>
+	</div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-light"
+			data-bs-dismiss="modal">Fechar</button>
+		<button type="button" class="btn btn-primary"
+			onclick="pesquisarPessoa()">Buscar</button>
+		
+	  </div>
+	  </div>
+	</div>
+  </div>
+  <br>
+  <br>
+   <div style="height: 300px;">
+		<table class="table table-dark table-striped" id="tabelaResultados">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Nome</th>
+					<th scope="col">Telefone</th>
+					<th scope="col">Data de Pagamento</th>
+					<th scope="col">Status</th>
+					
+				</tr>
+			</thead>
+			<tbody id="tabelaCorpo">
+			</tbody>
+		</table>
+	  </div>
+      <div id="paginacao"></div>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+		integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function salvarPessoa() {
+			var id = $("#id").val();
+			var nome = $("#nome").val();
+			var endereco = $("#endereco").val();
+			var telefone = $("#telefone").val();
+			var dataNasc = $("#dataNasc").val();
+			var dataMat = $("#dataMat").val();
+			var dataPag = $("#dataPag").val();
+			var valor = $("#valor").val();
+			var status = $("#status").val();
+			
+
+			if (nome == null || nome != null && nome.trim() == '') {
+
+				alert('informe o nome')
+				return;
+			}
+
+			$("nome").focus();
+			
+			if (endereco == null || endereco != null
+					&& endereco.trim() == '') {
+
+				alert('informe o endereco')
+				return;
+			}
+			$("#endereco").focus();
+
+			if (telefone == null || telefone != null && telefone.trim() == '') {
+
+				alert('informe o telefone')
+				return;
+			}
+			$("#telefone").focus();
+
+			if (dataNasc == null || dataNasc != null && dataNasc.trim() == '') {
+
+				alert('informe a data de nascimento')
+				return;
+			}
+
+			$("#dataNasc").focus();
+
+			if (dataMat == null || dataMat != null
+					&& dataMat.trim() == '') {
+
+				alert('informe a data da matrícula')
+				return;
+			}
+
+			$("#dataMat").focus();
+
+			if (dataPag == null || dataPag != null && dataPag.trim() == '') {
+
+				alert('informe o vencimento da mensalidade')
+				return;
+			}
+
+			$("#dataPag").focus()
+
+			if (status == null || status != null && status.trim() == '') {
+
+				alert('informe o status do pagamento')
+				return;
+			}
+
+			$("#status").focus()
+
+			$.ajax({
+				method : "POST",
+				url : "cadastrar",
+				data : JSON.stringify({
+					id : id,
+					nome : nome,
+					endereco : endereco,
+					telefone : telefone,
+					dataNasc : dataNasc,
+					dataMat : dataMat,
+					dataPag : dataPag,
+					valor : Number(valor),
+					status : status,
+					
+				}),
+				contentType : "application/json; charset = utf-8",
+				success : function(response) {
+					$("#id").val(response.id);
+					alert("Dados gravados com sucesso!")
+					resetarFormulario();
+					  buscarRegistrosDaAPI();
+				}
+			}).fail(function(xhr, status, errorThrown) {
+				alert("Erro ao salvar dados: " + xhr.responseText);
+			});
+		}
+		
+		function pesquisarPessoa(){
+			  
+			  var nome = $('#nameBusca').val();		  
+			  if(nome != null && nome.trim() != '') {
+				  
+				 $.ajax({
+				  method:"GET",
+				  url:"buscarPorNome",
+				  data: "name=" + nome,
+				  success:function(response){
+					$('#tabelaResultados > tbody > tr').remove();  
+					for(var i = 0; i < response.length; i++){
+					$('#tabelaResultados > tbody').append('<tr id="'+response[i].id+'"><td>'+response[i].id+'</td><td>'+response[i].nome+'</td><td>'+response[i].telefone+'</td><td>'+response[i].status+'</td><td><button type="button" class="btn btn-info" onclick="verEditar('+response[i].id+')">Mais</button></td><td><button type="button" class="btn btn-danger" onclick="excluirPessoa('+response[i].id+')">Excluir</button></td></tr>')  
+					} 
+				  }
+			  }).fail(function(xhr,status,errorThrown){
+				  alert("Erro ao buscar cliente: " + xhr.responseText);
+			  });  
+				  
+				  
+			  }
+		  }
+		
+		
+		 function verEditar(id){
+			  
+			  $.ajax({
+				  method:"GET",
+				  url:"buscarid",
+			        data:"idpessoa="+ id,
+				    success:function(response){
+					$("#id").val(response.id);
+			        $("#nome").val(response.nome);
+			        $("#endereco").val(response.endereco);
+			        $("#telefone").val(response.telefone);
+			        $("#dataNasc").val(response.dataNasc);
+			        $("#dataMat").val(response.dataMat);
+			        $("#dataPag").val(response.dataPag);		  
+			        $("#valor").val(response.valor);
+			        $("#status").val(response.status);			       
+			        
+			        $('#modalPesquisarPessoa').modal('hide')
+				  }
+			  }).fail(function(xhr,status,errorThrown){
+				  alert("Erro ao buscar morador: " + xhr.responseText);
+			  });  
+				  
+			  
+			  
+			  
+		  } 
+		 
+		  function deletarInicio(){
+			  var id = $('#id').val();
+			  if(id != null && id.trim()!= ''){		 	 
+			  excluirPessoa(id);
+			  document.getElementById('formCadastro').reset();
+			  }
+		  }
+		 
+		  
+		  function excluirPessoa(id){
+			  
+				if(confirm('Deseja realmente excluir a pessoa ?')){  
+			  $.ajax({
+				  
+					  method:"DELETE",
+					  url:"excluir",
+					  data: "idpessoa=" + id,
+					  success:function(){
+						 $('#' + id).remove(); 
+						alert('Excluído com sucesso');
+						  buscarRegistrosDaAPI();
+				       
+					  }
+				  }).fail(function(xhr,status,errorThrown){
+					  alert("Erro ao excluir pessoa: " + xhr.responseText);
+				  });  
+			 
+			    }
+			 
+			  }  
+		
+			 
+			 
+			   const itensPorPagina = 5; 
+			   let paginaAtual = 1; 
+
+			   function buscarRegistrosDaAPI() {
+			    
+			     const apiUrl =  'http://localhost:8080/buscaTodos';
+
+			     
+			     const tabelaCorpo = document.getElementById('tabelaCorpo');
+
+			     
+			     tabelaCorpo.innerHTML = '';
+
+			     
+			     fetch(apiUrl)
+			       .then(response => {
+			         if (!response.ok) {
+			           throw new Error(`Erro na requisição: ${response.statusText}`);
+			         }
+			         return response.json();
+			       })
+			       .then(data => {
+			         
+			         const indiceInicial = (paginaAtual - 1) * itensPorPagina;
+			         const indiceFinal = indiceInicial + itensPorPagina;
+
+			         
+			         data.slice(indiceInicial, indiceFinal).forEach(item => {
+			           const linha = document.createElement('tr');
+			           linha.innerHTML =  `<td>${item.id}</td><td>${item.nome}</td><td>${item.telefone}</td><td>${item.dataPag}</td><td>${item.status}</td>`;
+			           tabelaCorpo.appendChild(linha);
+			         });
+
+			         
+			         atualizarPaginacao(data.length);
+			       })
+			       .catch(error => {
+			         console.error('Erro ao buscar registros da API:', error.message);
+			       });
+			   }
+
+			   function atualizarPaginacao(totalRegistros) {
+			     const totalPaginas = Math.ceil(totalRegistros / itensPorPagina);
+
+			     
+			     const paginacaoDiv = document.getElementById('paginacao');
+			     paginacaoDiv.innerHTML = '';
+
+			     
+			     for (let i = 1; i <= totalPaginas; i++) {
+			       const botao = document.createElement('button');
+			       botao.textContent = i;
+			       botao.addEventListener('click', () => trocarPagina(i));
+			       paginacaoDiv.appendChild(botao);
+			     }
+			   }
+
+			   function trocarPagina(novaPagina) {
+			     paginaAtual = novaPagina;
+			     buscarRegistrosDaAPI();
+			   }
+
+			   
+			   buscarRegistrosDaAPI();
+			 
+			   function resetarFormulario() {
+				    
+				    const formulario = document.getElementById('formCadastro');
+
+				    
+				    for (let i = 0; i < formulario.elements.length; i++) {
+				      const elemento = formulario.elements[i];
+
+				      
+				      if (elemento.tagName === 'INPUT' || elemento.tagName === 'TEXTAREA' || elemento.tagName === 'SELECT') {
+				        
+				        elemento.value = '';
+				      }
+				    }
+				  }
+		
+	</script>
+</body>
+</html>
